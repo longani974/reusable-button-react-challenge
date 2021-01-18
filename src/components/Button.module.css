@@ -1,0 +1,8 @@
+.hover:hover {
+    background-color: var(--hoverColor) !important;
+}
+
+.hover:active,
+.hover:focus {
+    outline: none !important;
+}
