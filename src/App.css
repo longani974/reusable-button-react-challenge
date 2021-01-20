@@ -32,3 +32,8 @@ h1 {
     gap: 1em;
     align-items: center;
 }
+
+pre {
+    margin-top: 0.75em;
+    padding: 2em;
+}

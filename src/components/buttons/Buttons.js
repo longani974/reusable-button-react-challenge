@@ -1,12 +1,144 @@
-import Prism from 'prismjs';
+// import Prism from 'prismjs';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import Button from '../button/Button';
 
-const exampleCode = `
-<Button clickHandler={clickHandler}>Button</Button>
-`.trim();
+const code = {
+    default: `<Button clickHandler={clickHandler}>Button</Button>`,
+    outline: `<Button
+    variant="outline"
+    color="default"
+>
+    Outline
+</Button>
+
+<Button
+    variant="outline"
+    color="primary"
+>
+    Outline
+</Button>
+
+<Button
+    variant="outline"
+    color="secondary"
+>
+    Outline
+</Button>
+
+<Button
+    variant="outline"
+    color="danger"
+>
+    Outline
+</Button>`,
+    textOnly: ` <Button
+    variant="text"
+    color="default"
+>
+    Text
+</Button>
+<Button
+    variant="text"
+    color="primary"
+>
+    Text
+</Button>
+<Button
+    variant="text"
+    color="secondary"
+>
+    Text
+</Button>
+<Button
+    variant="text"
+    color="danger"
+>
+    Text
+</Button>`,
+    disableShadow: `<Button disableShadow>
+`,
+    disabled: `<Button disabled>`,
+    withIcon: `<Button
+    startIcon="cart-arrow-down"
+    color="primary"
+    clickHandler={clickHandler}
+>
+    Start Icon
+</Button>
+<Button
+    endIcon="cart-arrow-down"
+    color="primary"
+    clickHandler={clickHandler}
+>
+    End Icon
+</Button>
+<Button
+    startIcon="cart-arrow-down"
+    endIcon="cart-arrow-down"
+    color="primary"
+    clickHandler={clickHandler}
+>
+    Start & End Icon
+</Button>`,
+    size: `<Button
+    size="sm"
+    clickHandler={clickHandler}
+    color="primary"
+>
+    Size sm
+</Button>
+<Button
+    size="md"
+    clickHandler={clickHandler}
+    color="primary"
+>
+    Size md
+</Button>
+<Button
+    size="lg"
+    clickHandler={clickHandler}
+    color="primary"
+>
+    Size lg
+</Button>`,
+    color: `<Button color="default" clickHandler={clickHandler}>
+    Default
+</Button>
+<Button color="primary" clickHandler={clickHandler}>
+    Primary
+</Button>
+<Button color="secondary" clickHandler={clickHandler}>
+    Secondary
+</Button>
+<Button color="danger" clickHandler={clickHandler}>
+    Danger
+</Button>`,
+};
 
 const Buttons = () => {
+    const highlightCode = (codeToDisplay) => {
+        return (
+            <Highlight {...defaultProps} code={codeToDisplay} language="jsx">
+                {({
+                    className,
+                    style,
+                    tokens,
+                    getLineProps,
+                    getTokenProps,
+                }) => (
+                    <pre className={className} style={style}>
+                        {tokens.map((line, i) => (
+                            <div {...getLineProps({ line, key: i })}>
+                                {line.map((token, key) => (
+                                    <span {...getTokenProps({ token, key })} />
+                                ))}
+                            </div>
+                        ))}
+                    </pre>
+                )}
+            </Highlight>
+        );
+    };
     const clickHandler = () => {
         console.log('click');
     };
@@ -22,27 +154,7 @@ const Buttons = () => {
             <div>
                 <div className="btnType">Default:</div>
                 <Button clickHandler={clickHandler}>Button</Button>
-                <Highlight {...defaultProps} code={exampleCode} language="jsx">
-                    {({
-                        className,
-                        style,
-                        tokens,
-                        getLineProps,
-                        getTokenProps,
-                    }) => (
-                        <pre className={className} style={style}>
-                            {tokens.map((line, i) => (
-                                <div {...getLineProps({ line, key: i })}>
-                                    {line.map((token, key) => (
-                                        <span
-                                            {...getTokenProps({ token, key })}
-                                        />
-                                    ))}
-                                </div>
-                            ))}
-                        </pre>
-                    )}
-                </Highlight>
+                {highlightCode(code.default)}
             </div>
             <div>
                 <div className="btnType">Outline:</div>
@@ -79,6 +191,7 @@ const Buttons = () => {
                         Outline
                     </Button>
                 </div>
+                {highlightCode(code.outline)}
             </div>
             <div>
                 <div className="btnType">Text only:</div>
@@ -112,6 +225,7 @@ const Buttons = () => {
                         Text
                     </Button>
                 </div>
+                {highlightCode(code.textOnly)}
             </div>
             <div>
                 <div className="btnType">No shadow:</div>
@@ -119,12 +233,14 @@ const Buttons = () => {
                 <Button clickHandler={clickHandler} disableShadow>
                     No Shadow
                 </Button>
+                {highlightCode(code.disableShadow)}
             </div>
             <div>
                 <div className="btnType">Disabled:</div>
                 <Button clickHandler={clickHandler} disabled>
                     Disabled
                 </Button>
+                {highlightCode(code.disabled)}
             </div>
             <div>
                 <div className="btnType">With icon:</div>
@@ -152,6 +268,7 @@ const Buttons = () => {
                         Start & End Icon
                     </Button>
                 </div>
+                {highlightCode(code.withIcon)}
             </div>
             <div>
                 <div className="btnType">Size:</div>
@@ -178,6 +295,7 @@ const Buttons = () => {
                         Size lg
                     </Button>
                 </div>
+                {highlightCode(code.size)}
             </div>
             <div>
                 <div className="btnType">Color:</div>
@@ -195,6 +313,7 @@ const Buttons = () => {
                         Danger
                     </Button>
                 </div>
+                {highlightCode(code.color)}
             </div>
             <div>
                 <div className="btnType">Error:</div>
