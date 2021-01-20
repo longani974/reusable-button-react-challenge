@@ -1,8 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Ubuntu+Mono&display=swap');
+
+:root {
+    --gray2: #333333;
+    --gray2: #4f4f4f;
+}
+
 .App {
     padding: 3em;
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: 2.83em;
+}
+
+h1 {
+    font-family: Poppins;
+    font-size: 1.5em;
+    line-height: 2.25em;
+    color: var(--gray2);
+}
+
+.btnType {
+    font-family: Poppins;
+    font-size: 1em;
+    line-height: 1em;
+    color: var(--gray2);
+    margin-bottom: 0.75em;
 }
 
 .flexRow {
