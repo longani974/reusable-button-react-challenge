@@ -2,118 +2,15 @@
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import Button from '../button/Button';
 
-const code = {
-    default: `<Button clickHandler={clickHandler}>Button</Button>`,
-    outline: `<Button
-    variant="outline"
-    color="default"
->
-    Outline
-</Button>
-
-<Button
-    variant="outline"
-    color="primary"
->
-    Outline
-</Button>
-
-<Button
-    variant="outline"
-    color="secondary"
->
-    Outline
-</Button>
-
-<Button
-    variant="outline"
-    color="danger"
->
-    Outline
-</Button>`,
-    textOnly: ` <Button
-    variant="text"
-    color="default"
->
-    Text
-</Button>
-<Button
-    variant="text"
-    color="primary"
->
-    Text
-</Button>
-<Button
-    variant="text"
-    color="secondary"
->
-    Text
-</Button>
-<Button
-    variant="text"
-    color="danger"
->
-    Text
-</Button>`,
-    disableShadow: `<Button disableShadow>
-`,
-    disabled: `<Button disabled>`,
-    withIcon: `<Button
-    startIcon="cart-arrow-down"
-    color="primary"
-    clickHandler={clickHandler}
->
-    Start Icon
-</Button>
-<Button
-    endIcon="cart-arrow-down"
-    color="primary"
-    clickHandler={clickHandler}
->
-    End Icon
-</Button>
-<Button
-    startIcon="cart-arrow-down"
-    endIcon="cart-arrow-down"
-    color="primary"
-    clickHandler={clickHandler}
->
-    Start & End Icon
-</Button>`,
-    size: `<Button
-    size="sm"
-    clickHandler={clickHandler}
-    color="primary"
->
-    Size sm
-</Button>
-<Button
-    size="md"
-    clickHandler={clickHandler}
-    color="primary"
->
-    Size md
-</Button>
-<Button
-    size="lg"
-    clickHandler={clickHandler}
-    color="primary"
->
-    Size lg
-</Button>`,
-    color: `<Button color="default" clickHandler={clickHandler}>
-    Default
-</Button>
-<Button color="primary" clickHandler={clickHandler}>
-    Primary
-</Button>
-<Button color="secondary" clickHandler={clickHandler}>
-    Secondary
-</Button>
-<Button color="danger" clickHandler={clickHandler}>
-    Danger
-</Button>`,
-};
+import DefaultButton from './buttonsComponents/DefaultButton';
+import OutlineButton from './buttonsComponents/OutlineButton';
+import TextOnlyButton from './buttonsComponents/TextOnlyButton';
+import DisableShadowButton from './buttonsComponents/DisableShadowButton';
+import DisabledButton from './buttonsComponents/DisabledButton';
+import WithIconButton from './buttonsComponents/WithIconButton';
+import SizeButton from './buttonsComponents/SizeButton';
+import ColorButton from './buttonsComponents/ColorButton';
+import ErrorButton from './buttonsComponents/ErrorButton';
 
 const Buttons = () => {
     const highlightCode = (codeToDisplay) => {
@@ -151,180 +48,39 @@ const Buttons = () => {
     return (
         <div className="App">
             <h1>Buttons</h1>
-            <div>
-                <div className="btnType">Default:</div>
-                <Button clickHandler={clickHandler}>Button</Button>
-                {highlightCode(code.default)}
-            </div>
-            <div>
-                <div className="btnType">Outline:</div>
-                <div className="flexRow">
-                    <Button
-                        variant="outline"
-                        color="default"
-                        clickHandler={clickHandler}
-                    >
-                        Outline
-                    </Button>
-
-                    <Button
-                        variant="outline"
-                        color="primary"
-                        clickHandler={clickHandler}
-                    >
-                        Outline
-                    </Button>
-
-                    <Button
-                        variant="outline"
-                        color="secondary"
-                        clickHandler={clickHandler}
-                    >
-                        Outline
-                    </Button>
-
-                    <Button
-                        variant="outline"
-                        color="danger"
-                        clickHandler={clickHandler}
-                    >
-                        Outline
-                    </Button>
-                </div>
-                {highlightCode(code.outline)}
-            </div>
-            <div>
-                <div className="btnType">Text only:</div>
-                <div className="flexRow">
-                    <Button
-                        variant="text"
-                        color="default"
-                        clickHandler={clickHandler}
-                    >
-                        Text
-                    </Button>
-                    <Button
-                        variant="text"
-                        color="primary"
-                        clickHandler={clickHandler}
-                    >
-                        Text
-                    </Button>
-                    <Button
-                        variant="text"
-                        color="secondary"
-                        clickHandler={clickHandler}
-                    >
-                        Text
-                    </Button>
-                    <Button
-                        variant="text"
-                        color="danger"
-                        clickHandler={clickHandler}
-                    >
-                        Text
-                    </Button>
-                </div>
-                {highlightCode(code.textOnly)}
-            </div>
-            <div>
-                <div className="btnType">No shadow:</div>
-
-                <Button clickHandler={clickHandler} disableShadow>
-                    No Shadow
-                </Button>
-                {highlightCode(code.disableShadow)}
-            </div>
-            <div>
-                <div className="btnType">Disabled:</div>
-                <Button clickHandler={clickHandler} disabled>
-                    Disabled
-                </Button>
-                {highlightCode(code.disabled)}
-            </div>
-            <div>
-                <div className="btnType">With icon:</div>
-                <div className="flexRow">
-                    <Button
-                        startIcon="cart-arrow-down"
-                        color="primary"
-                        clickHandler={clickHandler}
-                    >
-                        Start Icon
-                    </Button>
-                    <Button
-                        endIcon="cart-arrow-down"
-                        color="primary"
-                        clickHandler={clickHandler}
-                    >
-                        End Icon
-                    </Button>
-                    <Button
-                        startIcon="cart-arrow-down"
-                        endIcon="cart-arrow-down"
-                        color="primary"
-                        clickHandler={clickHandler}
-                    >
-                        Start & End Icon
-                    </Button>
-                </div>
-                {highlightCode(code.withIcon)}
-            </div>
-            <div>
-                <div className="btnType">Size:</div>
-                <div className="flexRow">
-                    <Button
-                        size="sm"
-                        clickHandler={clickHandler}
-                        color="primary"
-                    >
-                        Size sm
-                    </Button>
-                    <Button
-                        size="md"
-                        clickHandler={clickHandler}
-                        color="primary"
-                    >
-                        Size md
-                    </Button>
-                    <Button
-                        size="lg"
-                        clickHandler={clickHandler}
-                        color="primary"
-                    >
-                        Size lg
-                    </Button>
-                </div>
-                {highlightCode(code.size)}
-            </div>
-            <div>
-                <div className="btnType">Color:</div>
-                <div className="flexRow">
-                    <Button color="default" clickHandler={clickHandler}>
-                        Default
-                    </Button>
-                    <Button color="primary" clickHandler={clickHandler}>
-                        Primary
-                    </Button>
-                    <Button color="secondary" clickHandler={clickHandler}>
-                        Secondary
-                    </Button>
-                    <Button color="danger" clickHandler={clickHandler}>
-                        Danger
-                    </Button>
-                </div>
-                {highlightCode(code.color)}
-            </div>
-            <div>
-                <div className="btnType">Error:</div>
-                <Button
-                    variant="tgfdext"
-                    color="fds"
-                    clickHandler={clickHandler}
-                >
-                    Text
-                </Button>
-            </div>
+            <DefaultButton
+                highlightCode={highlightCode}
+                clickHandler={clickHandler}
+            />
+            <OutlineButton
+                highlightCode={highlightCode}
+                clickHandler={clickHandler}
+            />
+            <TextOnlyButton
+                highlightCode={highlightCode}
+                clickHandler={clickHandler}
+            />
+            <DisableShadowButton
+                highlightCode={highlightCode}
+                clickHandler={clickHandler}
+            />
+            <DisabledButton
+                highlightCode={highlightCode}
+                clickHandler={clickHandler}
+            />
+            <WithIconButton
+                highlightCode={highlightCode}
+                clickHandler={clickHandler}
+            />
+            <SizeButton
+                highlightCode={highlightCode}
+                clickHandler={clickHandler}
+            />
+            <ColorButton
+                highlightCode={highlightCode}
+                clickHandler={clickHandler}
+            />
+            <ErrorButton clickHandler={clickHandler} />
             <Button color="danger" clickHandler={alertPriya} size="lg">
                 Priya la caca
             </Button>
